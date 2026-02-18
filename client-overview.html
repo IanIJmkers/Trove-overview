@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trove - App Overview</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg: #0a0a0a;
+        --surface: #141414;
+        --surface-2: #1a1a1a;
+        --border: #2a2a2a;
+        --text: #f5f5f5;
+        --text-muted: #888;
+        --accent: #ffffff;
+        --gradient-1: #6366f1;
+        --gradient-2: #8b5cf6;
+        --gradient-3: #a855f7;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Hero */
+      .hero {
+        text-align: center;
+        padding: 80px 40px 60px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(99, 102, 241, 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .logo {
+        width: 72px;
+        height: 72px;
+        border-radius: 18px;
+        margin-bottom: 24px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+        font-weight: 800;
+        letter-spacing: -1.5px;
+        margin-bottom: 12px;
+      }
+
+      .hero .tagline {
+        font-size: 18px;
+        color: var(--text-muted);
+        font-weight: 400;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      /* Feature sections */
+      .features {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 40px 100px;
+        display: flex;
+        flex-direction: column;
+        gap: 100px;
+      }
+
+      .feature {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .feature:nth-child(even) {
+        direction: rtl;
+      }
+
+      .feature:nth-child(even) > * {
+        direction: ltr;
+      }
+
+      .feature-text {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .feature-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--gradient-2);
+      }
+
+      .feature-title {
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        line-height: 1.2;
+      }
+
+      .feature-desc {
+        font-size: 15px;
+        color: var(--text-muted);
+        line-height: 1.7;
+      }
+
+      .feature-highlights {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 4px;
+      }
+
+      .feature-highlights li {
+        font-size: 13px;
+        color: var(--text-muted);
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .feature-highlights li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 7px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--gradient-2);
+      }
+
+      /* Phone mockups */
+      .feature-screens {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+      }
+
+      .phone-frame {
+        width: 220px;
+        background: var(--surface);
+        border-radius: 28px;
+        border: 2px solid var(--border);
+        padding: 12px;
+        position: relative;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      }
+
+      .phone-frame::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 6px;
+        background: var(--surface-2);
+        border-radius: 3px;
+        z-index: 2;
+      }
+
+      .phone-screen {
+        width: 100%;
+        aspect-ratio: 9/19.5;
+        background: var(--surface-2);
+        border-radius: 18px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .phone-screen img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 18px;
+      }
+
+      .phone-screen .placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        color: var(--text-muted);
+        font-size: 11px;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .placeholder-icon {
+        width: 36px;
+        height: 36px;
+        border: 2px dashed #333;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: #444;
+      }
+
+      /* Single phone layout */
+      .feature-screens.single {
+        justify-content: center;
+      }
+
+      .feature-screens.single .phone-frame {
+        width: 240px;
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        padding: 40px;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 13px;
+      }
+
+      /* Print styles */
+      @media print {
+        body {
+          background: white;
+          color: #111;
+        }
+        .hero::before {
+          display: none;
+        }
+        .feature-label {
+          color: #6366f1;
+        }
+        .feature-desc,
+        .feature-highlights li,
+        .hero .tagline {
+          color: #555;
+        }
+        .phone-frame {
+          border-color: #ddd;
+          background: #f9f9f9;
+          box-shadow: none;
+        }
+        .phone-screen {
+          background: #eee;
+        }
+        .feature {
+          page-break-inside: avoid;
+        }
+        .features {
+          gap: 60px;
+        }
+        .footer {
+          border-color: #ddd;
+          color: #999;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .feature {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .feature:nth-child(even) {
+          direction: ltr;
+        }
+        .hero h1 {
+          font-size: 36px;
+        }
+        .feature-title {
+          font-size: 26px;
+        }
+        .phone-frame {
+          width: 180px;
+        }
+        .features {
+          gap: 60px;
+          padding: 0 20px 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <img src="/Trove-Logo.png" alt="Trove" class="logo" />
+      <h1>Trove</h1>
+      <p class="tagline">
+        Your TCG collection tracker with real-time market data, AI grading, and
+        set completion tracking.
+      </p>
+    </section>
+
+    <div class="features">
+      <!-- 1. Portfolio -->
+      <div class="feature">
+        <div class="feature-text">
+          <span class="feature-label">01 &mdash; Portfolio</span>
+          <h2 class="feature-title">Track your collection's real-time value</h2>
+          <p class="feature-desc">
+            Add your cards and instantly see their market value powered by
+            active eBay listings. Use the AI Grading tool to estimate what grade
+            your card would receive, and the Centering tool to check alignment
+            before sending cards off for grading.
+          </p>
+          <ul class="feature-highlights">
+            <li>Live market value from eBay</li>
+            <li>AI-powered grade estimation</li>
+            <li>Centering analysis tool</li>
+            <li>Gains &amp; losses at a glance</li>
+          </ul>
+        </div>
+        <div class="feature-screens">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <img src="screenshots/1.png" alt="Portfolio" />
+            </div>
+          </div>
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <img src="screenshots/2.png" alt="AI Grader" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Chase -->
+      <div class="feature">
+        <div class="feature-text">
+          <span class="feature-label">02 &mdash; Chase</span>
+          <h2 class="feature-title">Hunt smarter at every convention</h2>
+          <p class="feature-desc">
+            Build wishlists of cards you're hunting at your next convention. Use
+            the built-in calculator with percentage-based modifiers to instantly
+            evaluate deals on the spot and never overpay again.
+          </p>
+          <ul class="feature-highlights">
+            <li>Convention-ready wishlists</li>
+            <li>Deal calculator with % modifiers</li>
+            <li>Per-card value adjustments</li>
+            <li>Real-time price reference</li>
+          </ul>
+        </div>
+        <div class="feature-screens">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <img src="screenshots/3.png" alt="Chase List" />
+            </div>
+          </div>
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <img src="screenshots/4.png" alt="Calculator" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Sets -->
+      <div class="feature">
+        <div class="feature-text">
+          <span class="feature-label">03 &mdash; Sets</span>
+          <h2 class="feature-title">Track your master set journey</h2>
+          <p class="feature-desc">
+            Visual progress bars show exactly how close you are to completing
+            each set across Pokemon and One Piece TCG. Check off cards as you
+            collect them and watch your progress grow.
+          </p>
+          <ul class="feature-highlights">
+            <li>Pokemon &amp; One Piece TCG sets</li>
+            <li>Visual completion progress</li>
+            <li>Card-by-card check-off</li>
+            <li>Grid &amp; list views</li>
+          </ul>
+        </div>
+        <div class="feature-screens single">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <img src="screenshots/5.png" alt="Set Tracker" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Market -->
+      <div class="feature">
+        <div class="feature-text">
+          <span class="feature-label">04 &mdash; Market</span>
+          <h2 class="feature-title">Instant market intelligence</h2>
+          <p class="feature-desc">
+            Search any card to see its current market value from live eBay
+            listings. Filter by grading company and grade, or use the PSA slab
+            scanner to instantly identify and price a graded card by scanning
+            its barcode.
+          </p>
+          <ul class="feature-highlights">
+            <li>Live eBay pricing data</li>
+            <li>PSA / BGS / CGC filters</li>
+            <li>PSA barcode slab scanner</li>
+            <li>Direct purchase links</li>
+          </ul>
+        </div>
+        <div class="feature-screens">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <img src="screenshots/6.png" alt="Market Search" />
+            </div>
+          </div>
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <img src="screenshots/7.png" alt="PSA Scanner" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Profile -->
+      <div class="feature">
+        <div class="feature-text">
+          <span class="feature-label">05 &mdash; Profile</span>
+          <h2 class="feature-title">Your account, your way</h2>
+          <p class="feature-desc">
+            Manage your account with Apple and Google sign-in, toggle between
+            USD and GBP, and report bugs directly to the team. Simple and
+            secure.
+          </p>
+          <ul class="feature-highlights">
+            <li>Apple &amp; Google sign-in</li>
+            <li>Currency toggle (USD / GBP)</li>
+            <li>Built-in bug reporting</li>
+          </ul>
+        </div>
+        <div class="feature-screens single">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <img src="screenshots/8.png" alt="Profile" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Trove &mdash; Your TCG companion. Built for collectors, by collectors.
+    </div>
+  </body>
+</html>
