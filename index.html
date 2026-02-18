@@ -4,9 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml+png" href="/logo-bg.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" />
     <title>Trove - App Overview</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
       * {
         margin: 0;
@@ -36,6 +38,7 @@
         color: var(--text);
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
       }
 
       /* Hero */
@@ -99,6 +102,32 @@
         grid-template-columns: 1fr 1fr;
         gap: 60px;
         align-items: center;
+        position: relative;
+      }
+
+      /* Ambient glow orbs — alternate left/right */
+      .feature::after {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: -1;
+        filter: blur(80px);
+        opacity: 0.04;
+      }
+
+      .feature:nth-child(odd)::after {
+        background: var(--gradient-1);
+        right: -200px;
+        top: -100px;
+      }
+
+      .feature:nth-child(even)::after {
+        background: var(--gradient-3);
+        left: -200px;
+        bottom: -100px;
       }
 
       .feature:nth-child(even) {
@@ -107,6 +136,11 @@
 
       .feature:nth-child(even) > * {
         direction: ltr;
+      }
+
+      .feature + .feature {
+        padding-top: 100px;
+        border-top: 1px solid rgba(255, 255, 255, 0.04);
       }
 
       .feature-text {
@@ -251,6 +285,24 @@
         flex-direction: column;
         align-items: center;
         gap: 24px;
+        position: relative;
+      }
+
+      .download::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(139, 92, 246, 0.06) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: -1;
       }
 
       .download h2 {
@@ -497,12 +549,12 @@
         <div class="feature-screens">
           <div class="phone-frame">
             <div class="phone-screen">
-              <img src="screenshots/1.png" alt="Portfolio" />
+              <img src="screenshots/1.jpg" alt="Portfolio" width="480" height="1041" decoding="async" />
             </div>
           </div>
           <div class="phone-frame">
             <div class="phone-screen">
-              <img src="screenshots/2.png" alt="AI Grader" />
+              <img src="screenshots/2.jpg" alt="AI Grader" width="480" height="1041" decoding="async" />
             </div>
           </div>
         </div>
@@ -528,12 +580,12 @@
         <div class="feature-screens">
           <div class="phone-frame">
             <div class="phone-screen">
-              <img src="screenshots/3.png" alt="Chase List" />
+              <img src="screenshots/3.jpg" alt="Chase List" width="480" height="1041" loading="lazy" decoding="async" />
             </div>
           </div>
           <div class="phone-frame">
             <div class="phone-screen">
-              <img src="screenshots/4.png" alt="Calculator" />
+              <img src="screenshots/4.jpg" alt="Calculator" width="480" height="1041" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
@@ -559,7 +611,7 @@
         <div class="feature-screens single">
           <div class="phone-frame">
             <div class="phone-screen">
-              <img src="screenshots/5.png" alt="Set Tracker" />
+              <img src="screenshots/5.jpg" alt="Set Tracker" width="480" height="1041" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
@@ -586,12 +638,12 @@
         <div class="feature-screens">
           <div class="phone-frame">
             <div class="phone-screen">
-              <img src="screenshots/6.png" alt="Market Search" />
+              <img src="screenshots/6.jpg" alt="Market Search" width="480" height="1041" loading="lazy" decoding="async" />
             </div>
           </div>
           <div class="phone-frame">
             <div class="phone-screen">
-              <img src="screenshots/7.png" alt="PSA Scanner" />
+              <img src="screenshots/7.jpg" alt="PSA Scanner" width="480" height="1041" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
@@ -616,7 +668,7 @@
         <div class="feature-screens single">
           <div class="phone-frame">
             <div class="phone-screen">
-              <img src="screenshots/8.png" alt="Profile" />
+              <img src="screenshots/8.jpg" alt="Profile" width="480" height="1041" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
