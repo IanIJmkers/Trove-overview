@@ -242,6 +242,65 @@
         width: 240px;
       }
 
+      /* Download CTA */
+      .download {
+        text-align: center;
+        padding: 80px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .download h2 {
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+
+      .download p {
+        color: var(--text-muted);
+        font-size: 15px;
+        max-width: 400px;
+      }
+
+      .download-actions {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        margin-top: 8px;
+      }
+
+      .qr-code {
+        width: 160px;
+        height: 160px;
+        background: #fff;
+        border-radius: 16px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .qr-code img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .app-store-badge {
+        display: block;
+        transition: opacity 0.2s;
+      }
+
+      .app-store-badge:hover {
+        opacity: 0.8;
+      }
+
+      .app-store-badge img {
+        height: 54px;
+        width: auto;
+      }
+
       /* Footer */
       .footer {
         text-align: center;
@@ -315,6 +374,16 @@
           gap: 60px;
           padding: 0 20px 60px;
         }
+        .download {
+          padding: 60px 24px;
+        }
+        .download h2 {
+          font-size: 26px;
+        }
+        .download-actions {
+          flex-direction: column;
+          gap: 24px;
+        }
       }
 
       @media (max-width: 480px) {
@@ -372,6 +441,25 @@
         .footer {
           padding: 32px 16px;
           font-size: 12px;
+        }
+        .download {
+          padding: 48px 16px;
+          gap: 18px;
+        }
+        .download h2 {
+          font-size: 22px;
+        }
+        .download p {
+          font-size: 14px;
+        }
+        .qr-code {
+          width: 140px;
+          height: 140px;
+          border-radius: 14px;
+          padding: 8px;
+        }
+        .app-store-badge img {
+          height: 46px;
         }
       }
     </style>
@@ -533,6 +621,19 @@
         </div>
       </div>
     </div>
+
+    <section class="download">
+      <h2>Download Trove</h2>
+      <p>Scan the QR code or tap the badge to get Trove on the App Store.</p>
+      <div class="download-actions">
+        <a href="https://apps.apple.com/nl/app/trove-tcg/id6757101192?l=en-GB" target="_blank" rel="noopener" class="qr-code">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fapps.apple.com%2Fnl%2Fapp%2Ftrove-tcg%2Fid6757101192%3Fl%3Den-GB" alt="QR code to Trove on the App Store" />
+        </a>
+        <a href="https://apps.apple.com/nl/app/trove-tcg/id6757101192?l=en-GB" target="_blank" rel="noopener" class="app-store-badge">
+          <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" />
+        </a>
+      </div>
+    </section>
 
     <div class="footer">
       Trove &mdash; Your TCG companion. Built for collectors, by collectors.
